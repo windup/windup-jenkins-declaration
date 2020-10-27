@@ -1,3 +1,13 @@
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - usernamePassword:
+              id: "7ab18af1-e683-402e-b1a6-d61d09a5650b"
+              password: ${casc-secret/test}
+              scope: GLOBAL
+              username: "test-user"
+
 jenkins:
   systemMessage: "Controlled by Configuration as Code. Do not install plugins manually, read: https://docs.engineering.redhat.com/pages/viewpage.action?pageId=93546799"
   numExecutors: 1
