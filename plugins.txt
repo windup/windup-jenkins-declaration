@@ -1,0 +1,4 @@
+# Put your plugins here.
+# This file will be merged with higher precedence with default plugins.txt
+# GitHub Pull Request Builder https://plugins.jenkins.io/ghprb/
+ghprb
