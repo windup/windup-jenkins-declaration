@@ -21,6 +21,11 @@ jenkins:
       groupIdStrategy: CaseInsensitive
       disableRolePrefixing: true
 
+  # Markup Formatter
+  markupFormatter:
+    rawHtml:
+      disableSyntaxHighlighting: false
+
   authorizationStrategy:
     roleBased:
       roles:
