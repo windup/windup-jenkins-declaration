@@ -14,7 +14,7 @@ groovy
 # Job Configuration History https://plugins.jenkins.io/jobConfigHistory/
 jobConfigHistory
 # Plugin Usage https://plugins.jenkins.io/plugin-usage-plugin/
-plugin-usage-plugin
+#plugin-usage-plugin
 # under evaluation plugins
 ansicolor:0.5.2
 badge:1.5
