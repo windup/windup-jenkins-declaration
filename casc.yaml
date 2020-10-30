@@ -3,10 +3,20 @@ credentials:
     domainCredentials:
       - credentials:
           - usernamePassword:
+              description: "GitHub"
               id: "7ab18af1-e683-402e-b1a6-d61d09a5650b"
-              password: ${casc-secret/test}
+              password: ${casc-secret/7ab18af1-e683-402e-b1a6-d61d09a5650b}
               scope: GLOBAL
-              username: "test-user"
+              username: "windupgithubbot1"
+          - openstackV3:
+              description: "OpenStack"
+              id: "76ffd092-d399-4f80-9cfa-f10fdbe54841"
+              password: ${casc-secret/76ffd092-d399-4f80-9cfa-f10fdbe54841}
+              scope: GLOBAL
+              projectDomain: "redhat.com"
+              projectName: "windup"
+              userDomain: "redhat.com"
+              username: "psi-windup-jenkins"
 
 jenkins:
   systemMessage: "Controlled by Configuration as Code. Do not install plugins manually, read: https://docs.engineering.redhat.com/pages/viewpage.action?pageId=93546799"
@@ -35,6 +45,35 @@ jenkins:
   markupFormatter:
     rawHtml:
       disableSyntaxHighlighting: false
+
+#  clouds:
+#    - openstack:
+#        credentialsId: "76ffd092-d399-4f80-9cfa-f10fdbe54841"
+#        endPointUrl: "https://rhos-d.infra.prod.upshift.rdu2.redhat.com:13000/v3/"
+#        ignoreSsl: false
+#        name: "openstackcloud-upshift"
+#        slaveOptions:
+#          availabilityZone: "nova"
+#          bootSource:
+#            image:
+#              name: "cat-os-image"
+#          fsRoot: "/home/jenkins"
+#          keyPairName: "content-test-jenkins"
+#          launcherFactory:
+#            ssh:
+#              credentialsId: "9fedb221-63fc-4bdb-ba0e-951ed73c97ab"
+#          networkId: "provider_net_cci_5"
+#        templates:
+#          - labels: "fedora"
+#            name: "fedora-slave"
+#            slaveOptions:
+#              hardwareId: "ab34d89f-a105-4c93-a7d9-185e327fa6d0"
+#              instanceCap: 3
+#              instancesMin: 3
+#              networkId: "68a8220a-20f4-4940-99b4-45b6f98bce6b"
+#              numExecutors: 4
+#              retentionTime: 1440
+#        zone: "regionOne"
 
   authorizationStrategy:
     roleBased:
