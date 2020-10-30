@@ -5,5 +5,80 @@
 antisamy-markup-formatter
 # Build Pipeline https://plugins.jenkins.io/build-pipeline-plugin/
 build-pipeline-plugin
+# Email Extension https://plugins.jenkins.io/email-ext/
+email-ext
 # GitHub Pull Request Builder https://plugins.jenkins.io/ghprb/
 ghprb
+# Groovy https://plugins.jenkins.io/groovy/
+groovy
+# Job Configuration History https://plugins.jenkins.io/jobConfigHistory/
+jobConfigHistory
+# Plugin Usage https://plugins.jenkins.io/plugin-usage-plugin/
+# missing in Update Center plugin-usage-plugin
+# under evaluation plugins
+ansicolor
+badge
+build-timeout
+build-view-column
+buildresult-trigger
+built-on-column
+ColumnsPlugin
+compact-columns
+configure-job-column-plugin
+console-column-plugin
+console-tail
+# missing in Update Center copy-to-slave
+cron_column
+dashboard-view
+depgraph-view
+description-column-plugin
+disk-usage
+docker-commons
+docker-workflow
+dumpling
+email-ext-recipients-column
+envinject-api
+envinject
+ez-templates
+flexible-publish
+gerrit-trigger
+greenballs
+groovy-postbuild
+icon-shim
+instant-messaging
+ircbot
+jenkins-multijob-plugin
+job-import-plugin
+jobtype-column
+jquery-ui
+mask-passwords
+monitoring
+multiple-scms
+nested-view
+nodelabelparameter
+nodenamecolumn
+pipeline-model-declarative-agent
+PrioritySorter
+python
+saferestart
+schedule-build
+sectioned-view
+shiningpanda
+skip-certificate-check
+slave-setup
+sonar
+# missing in Update Center sonargraph-plugin
+ssh-agent
+support-core
+test-stability
+thinBackup
+throttle-concurrents
+timestamper
+tmpcleaner
+toolenv
+translation
+windows-slaves
+ws-cleanup
+xunit
+xvnc
+zmq-event-publisher
