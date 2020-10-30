@@ -20,8 +20,8 @@ credentials:
 
 jenkins:
   systemMessage: "Controlled by Configuration as Code. Do not install plugins manually, read: https://docs.engineering.redhat.com/pages/viewpage.action?pageId=93546799"
-  numExecutors: 1
-  quietPeriod: 0
+  numExecutors: 0
+  quietPeriod: 5
 
   # Default LDAP configuration
   securityRealm:
@@ -46,34 +46,29 @@ jenkins:
     rawHtml:
       disableSyntaxHighlighting: false
 
-#  clouds:
-#    - openstack:
-#        credentialsId: "76ffd092-d399-4f80-9cfa-f10fdbe54841"
-#        endPointUrl: "https://rhos-d.infra.prod.upshift.rdu2.redhat.com:13000/v3/"
-#        ignoreSsl: false
-#        name: "openstackcloud-upshift"
-#        slaveOptions:
-#          availabilityZone: "nova"
-#          bootSource:
-#            image:
-#              name: "cat-os-image"
-#          fsRoot: "/home/jenkins"
-#          keyPairName: "content-test-jenkins"
-#          launcherFactory:
-#            ssh:
-#              credentialsId: "9fedb221-63fc-4bdb-ba0e-951ed73c97ab"
-#          networkId: "provider_net_cci_5"
-#        templates:
-#          - labels: "fedora"
-#            name: "fedora-slave"
-#            slaveOptions:
-#              hardwareId: "ab34d89f-a105-4c93-a7d9-185e327fa6d0"
-#              instanceCap: 3
-#              instancesMin: 3
-#              networkId: "68a8220a-20f4-4940-99b4-45b6f98bce6b"
-#              numExecutors: 4
-#              retentionTime: 1440
-#        zone: "regionOne"
+  clouds:
+    - openstack:
+        credentialsId: "76ffd092-d399-4f80-9cfa-f10fdbe54841"
+        endPointUrl: "https://rhos-d.infra.prod.upshift.rdu2.redhat.com:13000/v3/"
+        ignoreSsl: false
+        name: "openstackcloud-upshift"
+        slaveOptions:
+          bootSource:
+            image:
+              name: "Fedora Cloud Base 33"
+          hardwareId: "4169395c-d751-4457-915b-f5acbc594062"
+          instanceCap: 5
+          keyPairName: "windup-jenkins-public"
+          networkId: "provider_net_shared_3"
+        templates:
+          - labels: "fedora"
+            name: "fedora-slave"
+            slaveOptions:
+              bootSource:
+                volumeSnapshot:
+                  name: "windup-jenkins-slave-snapshot_20191114"
+              fsRoot: "/home/fedora"
+        zone: "regionOne"
 
   authorizationStrategy:
     roleBased:
