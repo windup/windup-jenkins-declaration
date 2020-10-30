@@ -16,7 +16,7 @@ credentials:
               projectDomain: "redhat.com"
               projectName: "windup"
               userDomain: "redhat.com"
-              username: "psi-windup-jenkins"
+              userName: "psi-windup-jenkins"
 
 jenkins:
   systemMessage: "Controlled by Configuration as Code. Do not install plugins manually, read: https://docs.engineering.redhat.com/pages/viewpage.action?pageId=93546799"
