@@ -111,6 +111,62 @@ jenkins:
                   credentialsId: "fedora"
         zone: "regionOne"
 
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            description: "Jenkins administrators"
+            permissions:
+              - "Overall/Administer"
+            assignments:
+              - "cci-octopus" # Instance telemetry collection
+              - "ci-support" # Access for the support team
+              - "sysops" # Access for the support team
+              - "ccit-test" # OpenShift automation account
+              - "ccit" # CCIT team
+              - "windup-eng"
+              # Here put customer's Rover group
+          - name: "anonymous"
+            description: "Anonymous users"
+            permissions:
+              - "Overall/Read"
+              - "Job/Read"
+            assignments:
+              - "anonymous"
+          - name: "readonly"
+            description: "Read-only users"
+            permissions:
+              - "Overall/Read"
+              - "Job/Read"
+              - "Job/ExtendedRead"
+              - "View/Read"
+            assignments:
+              - "authenticated"
+
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: true
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://2-235-jenkins-csb-uc.cloud.paas.psi.redhat.com/update-center.json"
+
+security:
+  sSHD:
+    port: 50022
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+
+unclassified:
+  shell:
+    shell: "bash"
   globalConfigFiles:
     configs:
       - mavenSettings:
@@ -209,63 +265,6 @@ jenkins:
               serverId: "jboss-snapshots-repository"
             - credentialsId: "maven-server-jboss-releases-repository"
               serverId: "jboss-releases-repository"
-
-  authorizationStrategy:
-    roleBased:
-      roles:
-        global:
-          - name: "admin"
-            description: "Jenkins administrators"
-            permissions:
-              - "Overall/Administer"
-            assignments:
-              - "cci-octopus" # Instance telemetry collection
-              - "ci-support" # Access for the support team
-              - "sysops" # Access for the support team
-              - "ccit-test" # OpenShift automation account
-              - "ccit" # CCIT team
-              - "windup-eng"
-              # Here put customer's Rover group
-          - name: "anonymous"
-            description: "Anonymous users"
-            permissions:
-              - "Overall/Read"
-              - "Job/Read"
-            assignments:
-              - "anonymous"
-          - name: "readonly"
-            description: "Read-only users"
-            permissions:
-              - "Overall/Read"
-              - "Job/Read"
-              - "Job/ExtendedRead"
-              - "View/Read"
-            assignments:
-              - "authenticated"
-
-  crumbIssuer:
-    standard:
-      excludeClientIPFromCrumb: true
-  agentProtocols:
-  - "JNLP4-connect"
-  - "Ping"
-
-  updateCenter:
-    sites:
-    - id: "default"
-      url: "https://2-235-jenkins-csb-uc.cloud.paas.psi.redhat.com/update-center.json"
-
-security:
-  sSHD:
-    port: 50022
-  apiToken:
-    creationOfLegacyTokenEnabled: false
-    tokenGenerationOnCreationEnabled: false
-    usageStatisticsEnabled: true
-
-unclassified:
-  shell:
-    shell: "bash"
 
 configuration-as-code:
   deprecated: warn
