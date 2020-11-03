@@ -257,13 +257,13 @@ unclassified:
           name: "generic_settings.xml"
           providerId: "org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig"
           serverCredentialMappings:
-            - credentialsId: "maven-server-myoss"
+            - credentialsId: "d5bff796-b374-4ee8-abc4-6b0e4da00645"
               serverId: "myoss"
-            - credentialsId: "maven-server-ossrh"
+            - credentialsId: "1c2c5639-9647-4cb6-aa16-8accac0f941d"
               serverId: "ossrh"
-            - credentialsId: "maven-server-jboss-snapshots-repository"
+            - credentialsId: "2379aaaa-88a6-4a15-b511-eea8665d78d0"
               serverId: "jboss-snapshots-repository"
-            - credentialsId: "maven-server-jboss-releases-repository"
+            - credentialsId: "ffff8a22-4e5e-4d0e-808d-af37fcb68aec"
               serverId: "jboss-releases-repository"
 
 configuration-as-code:
