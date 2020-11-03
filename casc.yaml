@@ -3,6 +3,12 @@ credentials:
     domainCredentials:
       - credentials:
           - usernamePassword:
+              description: "Just for testing purpose"
+              id: "test"
+              password: ${casc-secret/test}
+              scope: GLOBAL
+              username: "sample"
+          - usernamePassword:
               description: "GitHub"
               id: "7ab18af1-e683-402e-b1a6-d61d09a5650b"
               password: ${casc-secret/7ab18af1-e683-402e-b1a6-d61d09a5650b}
@@ -17,6 +23,38 @@ credentials:
               projectName: "windup"
               userDomain: "redhat.com"
               userName: "psi-windup-jenkins"
+          - basicSSHUserPrivateKey:
+              description: "fedora"
+              id: "83ae170d-919c-4061-8c4b-456348864ac5"
+              privateKeySource:
+                directEntry:
+                  privateKey: ${casc-secret/83ae170d-919c-4061-8c4b-456348864ac5}
+              scope: GLOBAL
+              username: "fedora"
+          - usernamePassword:
+              description: "maven-server-myoss"
+              id: "d5bff796-b374-4ee8-abc4-6b0e4da00645"
+              password: ${casc-secret/d5bff796-b374-4ee8-abc4-6b0e4da00645}
+              scope: GLOBAL
+              username: "admin"
+          - usernamePassword:
+              description: "maven-server-ossrh"
+              id: "1c2c5639-9647-4cb6-aa16-8accac0f941d"
+              password: ${casc-secret/1c2c5639-9647-4cb6-aa16-8accac0f941d}
+              scope: GLOBAL
+              username: "jsightle@redhat.com"
+          - usernamePassword:
+              description: "maven-server-jboss-snapshots-repository"
+              id: "2379aaaa-88a6-4a15-b511-eea8665d78d0"
+              password: ${casc-secret/2379aaaa-88a6-4a15-b511-eea8665d78d0}
+              scope: GLOBAL
+              username: "windup-jenkins"
+          - usernamePassword:
+              description: "maven-server-jboss-releases-repository"
+              id: "ffff8a22-4e5e-4d0e-808d-af37fcb68aec"
+              password: ${casc-secret/ffff8a22-4e5e-4d0e-808d-af37fcb68aec}
+              scope: GLOBAL
+              username: "windup-jenkins"
 
 jenkins:
   systemMessage: "Controlled by Configuration as Code. Do not install plugins manually, read: https://docs.engineering.redhat.com/pages/viewpage.action?pageId=93546799"
@@ -68,7 +106,109 @@ jenkins:
                 volumeSnapshot:
                   name: "windup-jenkins-slave-snapshot_20191114"
               fsRoot: "/home/fedora"
+              launcherFactory:
+                ssh:
+                  credentialsId: "fedora"
         zone: "regionOne"
+
+  globalConfigFiles:
+    configs:
+      - mavenSettings:
+          comment: "User settings"
+          content: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<settings\
+          \ xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+          \ xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd\"\
+          >\n  <profiles>\n    <!-- Configure the JBoss EAP Maven repository -->\n\
+          \    <profile>\n      <id>jboss-eap-repository</id>\n      <repositories>\n\
+          \        <repository>\n          <id>jboss-eap-techpreview</id>\n      \
+          \    <url>https://maven.repository.redhat.com/techpreview/all/</url>\n \
+          \         <releases>\n            <enabled>true</enabled>\n          </releases>\n\
+          \          <snapshots>\n            <enabled>false</enabled>\n         \
+          \ </snapshots>\n        </repository>\n      </repositories>\n      <pluginRepositories>\n\
+          \        <pluginRepository>\n          <id>jboss-eap-earlyaccess</id>\n\
+          \          <url>https://maven.repository.redhat.com/earlyaccess/all/</url>\n\
+          \          <releases>\n            <enabled>true</enabled>\n          </releases>\n\
+          \          <snapshots>\n            <enabled>false</enabled>\n         \
+          \ </snapshots>\n        </pluginRepository>\n      </pluginRepositories>\n\
+          \    </profile>\n\n    <!-- Configure the JBoss Community Maven repository\
+          \ -->\n    <profile>\n      <id>jboss-community-repository</id>\n      <repositories>\n\
+          \        <repository>\n          <id>jboss-community-repository</id>\n \
+          \         <url>https://repository.jboss.org/nexus/content/groups/public/</url>\n\
+          \          <releases>\n            <enabled>true</enabled>\n          </releases>\n\
+          \          <snapshots>\n            <enabled>true</enabled>\n          </snapshots>\n\
+          \        </repository>\n      </repositories>\n      <pluginRepositories>\n\
+          \        <pluginRepository>\n          <id>jboss-community-plugin-repository</id>\n\
+          \          <url>https://repository.jboss.org/nexus/content/groups/public/</url>\n\
+          \          <releases>\n            <enabled>true</enabled>\n          </releases>\n\
+          \          <snapshots>\n            <enabled>true</enabled>\n          </snapshots>\n\
+          \        </pluginRepository>\n      </pluginRepositories>\n    </profile>\n\
+          \n    <profile>\n    <id>jboss-developer-repository</id>\n    <repositories>\n\
+          \        <repository>\n            <id>jboss-developer-repository</id>\n\
+          \            <url>https://jboss-developer.github.io/temp-maven-repo/</url>\n\
+          \            <releases>\n               <enabled>true</enabled>\n      \
+          \      </releases>\n            <snapshots>\n              <enabled>false</enabled>\n\
+          \            </snapshots>\n        </repository>\n    </repositories>\n\
+          \    <pluginRepositories>\n        <pluginRepository>\n            <id>jboss-developer-plugin-repository</id>\n\
+          \            <url>https://jboss-developer.github.io/temp-maven-repo/</url>\n\
+          \            <releases>\n              <enabled>true</enabled>\n       \
+          \     </releases>\n            <snapshots>\n              <enabled>false</enabled>\n\
+          \            </snapshots>\n        </pluginRepository>\n    </pluginRepositories>\n\
+          </profile>\n   <profile>\n       <id>sonatype-snapshots</id>\n       <repositories>\n\
+          \           <repository>\n\t\t<id>sonatype-snapshots</id>\n\t\t<url>https://oss.sonatype.org/content/repositories/snapshots/</url>\n\
+          \               <releases>\n                  <enabled>false</enabled>\n\
+          \               </releases>\n               <snapshots>\n              \
+          \   <enabled>true</enabled>\n               </snapshots>\n           </repository>\n\
+          \       </repositories>\n   </profile>\n   <profile>\n       <id>jboss-releases</id>\n\
+          \       <repositories>\n           <repository>\n\t\t<id>jboss-releases</id>\n\
+          \t\t<url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/</url>\n\
+          \               <releases>\n                  <enabled>true</enabled>\n\
+          \               </releases>\n               <snapshots>\n              \
+          \   <enabled>false</enabled>\n               </snapshots>\n           </repository>\n\
+          \       </repositories>\n   </profile>\n  <profile>\n      <id>redhat-ga-repository</id>\n\
+          \      <repositories>\n        <repository>\n          <id>redhat-ga-repository</id>\n\
+          \          <name>Red Hat GA repository</name>\n          <url>https://maven.repository.redhat.com/ga/</url>\n\
+          \          <releases>\n            <enabled>true</enabled>\n           \
+          \ <updatePolicy>never</updatePolicy>\n          </releases>\n          <snapshots>\n\
+          \            <enabled>false</enabled>\n            <updatePolicy>daily</updatePolicy>\n\
+          \          </snapshots>\n        </repository>\n      </repositories>\n\
+          \      <pluginRepositories>\n        <pluginRepository>\n          <id>redhat-ga-repository</id>\n\
+          \          <name>Red Hat GA repository</name>\n          <url>https://maven.repository.redhat.com/ga/</url>\n\
+          \          <releases>\n            <enabled>true</enabled>\n           \
+          \ <updatePolicy>never</updatePolicy>\n          </releases>\n          <snapshots>\n\
+          \            <enabled>false</enabled>\n            <updatePolicy>daily</updatePolicy>\n\
+          \          </snapshots>\n        </pluginRepository>\n      </pluginRepositories>\n\
+          \    </profile>\n  <profile>\n      <id>central-overwrite-repository</id>\n\
+          \  <repositories>\n    <repository>\n      <id>central</id>\n      <name>Central\
+          \ Repository</name>\n      <url>https://repo.maven.apache.org/maven2</url>\n\
+          \      <layout>default</layout>\n      <snapshots>\n        <enabled>false</enabled>\n\
+          \      </snapshots>\n    </repository>\n  </repositories>\n  <pluginRepositories>\n\
+          \    <pluginRepository>\n      <id>central</id>\n      <name>Central Repository</name>\n\
+          \      <url>https://repo.maven.apache.org/maven2</url>\n      <layout>default</layout>\n\
+          \      <snapshots>\n        <enabled>false</enabled>\n      </snapshots>\n\
+          \      <releases>\n        <updatePolicy>never</updatePolicy>\n      </releases>\n\
+          \    </pluginRepository>\n  </pluginRepositories>\n    </profile>\n    <profile>\n\
+          \      <id>ossrh</id>\n      <activation>\n        <activeByDefault>true</activeByDefault>\n\
+          \      </activation>\n      <properties>\n        <gpg.passphrase>^${env.GPG_PASSPHRASE}</gpg.passphrase>\n\
+          \      </properties>\n    </profile>\n  </profiles>\n\n  <activeProfiles>\n\
+          \    <!-- Optionally, make the repositories active by default -->\n    <!--\
+          \ activeProfile>jboss-eap-repository</activeProfile -->\n    <!-- activeProfile>jboss-community-repository</activeProfile\
+          \ -->\n    <!--activeProfile>jboss-developer-repository</activeProfile>\
+          \ -->\n    <activeProfile>sonatype-snapshots</activeProfile>\n    <activeProfile>jboss-releases</activeProfile>\n\
+          \    <activeProfile>redhat-ga-repository</activeProfile>\n    <activeProfile>central-overwrite-repository</activeProfile>\n\
+          \  </activeProfiles>\n\n</settings>"
+          id: "5912562e-68e4-428f-9e45-55e11326552f"
+          isReplaceAll: true
+          name: "generic_settings.xml"
+          providerId: "org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig"
+          serverCredentialMappings:
+            - credentialsId: "maven-server-myoss"
+              serverId: "myoss"
+            - credentialsId: "maven-server-ossrh"
+              serverId: "ossrh"
+            - credentialsId: "maven-server-jboss-snapshots-repository"
+              serverId: "jboss-snapshots-repository"
+            - credentialsId: "maven-server-jboss-releases-repository"
+              serverId: "jboss-releases-repository"
 
   authorizationStrategy:
     roleBased:
