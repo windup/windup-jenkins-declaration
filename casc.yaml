@@ -61,6 +61,11 @@ credentials:
               password: ${casc-secret/481dbe69-c9a7-45ed-9de9-4be9a47c9259}
               scope: GLOBAL
               username: "12098665|windup"
+          - string:
+              scope: GLOBAL
+              secret: ${casc-secret/cb67d365-ece5-4e2b-bccf-bdab7ad2d741}
+              id: "cb67d365-ece5-4e2b-bccf-bdab7ad2d741"
+              description: "GPG Passphrase"
 
 jenkins:
   systemMessage: "Controlled by Configuration as Code. Do not install plugins manually, read: https://docs.engineering.redhat.com/pages/viewpage.action?pageId=93546799"
