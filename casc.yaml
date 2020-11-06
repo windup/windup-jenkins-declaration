@@ -55,6 +55,12 @@ credentials:
               password: ${casc-secret/ffff8a22-4e5e-4d0e-808d-af37fcb68aec}
               scope: GLOBAL
               username: "windup-jenkins"
+          - usernamePassword:
+              description: "registry.redhat.io"
+              id: "481dbe69-c9a7-45ed-9de9-4be9a47c9259"
+              password: ${casc-secret/481dbe69-c9a7-45ed-9de9-4be9a47c9259}
+              scope: GLOBAL
+              username: "12098665|windup"
 
 jenkins:
   systemMessage: "Controlled by Configuration as Code. Do not install plugins manually, read: https://docs.engineering.redhat.com/pages/viewpage.action?pageId=93546799"
