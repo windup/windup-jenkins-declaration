@@ -10,8 +10,11 @@ credentials:
               username: "sample"
           - usernamePassword:
               description: "GitHub"
-              id: "7ab18af1-e683-402e-b1a6-d61d09a5650b"
-              password: ${casc-secret/7ab18af1-e683-402e-b1a6-d61d09a5650b}
+              # Previous credentials based on password
+              #id: "7ab18af1-e683-402e-b1a6-d61d09a5650b"
+              #password: ${casc-secret/7ab18af1-e683-402e-b1a6-d61d09a5650b}
+              id: "e3773c5d-743a-4655-9080-e2050792b7af"
+              password: ${casc-secret/e3773c5d-743a-4655-9080-e2050792b7af}
               scope: GLOBAL
               username: "windupgithubbot1"
           - openstackV3:
