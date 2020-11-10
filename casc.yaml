@@ -66,6 +66,12 @@ credentials:
               secret: ${casc-secret/cb67d365-ece5-4e2b-bccf-bdab7ad2d741}
               id: "cb67d365-ece5-4e2b-bccf-bdab7ad2d741"
               description: "GPG Passphrase"
+          - usernamePassword:
+              description: "quay.io"
+              id: "38d0aca2-e50e-44ac-ad34-46301e43784c"
+              password: ${casc-secret/38d0aca2-e50e-44ac-ad34-46301e43784c}
+              scope: GLOBAL
+              username: "windupeng+robot"
 
 jenkins:
   systemMessage: "Controlled by Configuration as Code. Do not install plugins manually, read: https://docs.engineering.redhat.com/pages/viewpage.action?pageId=93546799"
@@ -120,6 +126,29 @@ jenkins:
               launcherFactory:
                 ssh:
                   credentialsId: "83ae170d-919c-4061-8c4b-456348864ac5"
+          - labels: "fedora-slave-perfcheck"
+            name: "fedora-slave-perfcheck"
+            slaveOptions:
+              bootSource:
+                volumeSnapshot:
+                  name: "windup-jenkins-slave-snapshot_20191114"
+              fsRoot: "/home/fedora"
+              launcherFactory:
+                ssh:
+                  credentialsId: "83ae170d-919c-4061-8c4b-456348864ac5"
+          - labels: "fedora-slave-release"
+            name: "fedora-slave-release"
+            slaveOptions:
+              bootSource:
+                volumeSnapshot:
+                  name: "windup-jenkins-slave-snapshot_20191114"
+              fsRoot: "/home/fedora"
+              hardwareId: "9108d0b1-eaaa-4199-b609-95ab2b7b3a66"
+              instanceCap: 1
+              launcherFactory:
+                ssh:
+                  credentialsId: "83ae170d-919c-4061-8c4b-456348864ac5"
+              retentionTime: 120
         zone: "regionOne"
 
   authorizationStrategy:
