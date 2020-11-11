@@ -199,6 +199,33 @@ jenkins:
     - id: "default"
       url: "https://2-235-jenkins-csb-uc.cloud.paas.psi.redhat.com/update-center.json"
 
+  mailer:
+    charset: "UTF-8"
+    defaultSuffix: "@redhat.com"
+    smtpHost: "smtp.corp.redhat.com"
+    useSsl: false
+    useTls: false
+  email-ext:
+    adminRequiredForTemplateTesting: false
+    allowUnregisteredEnabled: false
+    debugMode: false
+    defaultBody: |-
+      $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+      Check console output at $BUILD_URL to view the results.
+    defaultContentType: "text/plain"
+    defaultRecipients: "windup-eng@redhat.com"
+    defaultReplyTo: "windup-eng@redhat.com"
+    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
+    defaultTriggerIds:
+      - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
+    mailAccount:
+      address: "windup-eng@redhat.com"
+    maxAttachmentSize: 0
+    maxAttachmentSizeMb: 0
+    precedenceBulk: false
+    watchingEnabled: false
+
 security:
   sSHD:
     port: 50022
