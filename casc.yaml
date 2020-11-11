@@ -330,6 +330,7 @@ unclassified:
       - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
     mailAccount:
       address: "windup-eng@redhat.com"
+      smtpHost: "smtp.corp.redhat.com"
     maxAttachmentSize: 0
     maxAttachmentSizeMb: 0
     precedenceBulk: false
