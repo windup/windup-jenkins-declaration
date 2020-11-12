@@ -199,6 +199,150 @@ jenkins:
     - id: "default"
       url: "https://2-235-jenkins-csb-uc.cloud.paas.psi.redhat.com/update-center.json"
 
+  views:
+    - list:
+        columns:
+          - "status"
+          - "weather"
+          - "jobName"
+          - "lastSuccess"
+          - "lastFailure"
+          - "lastDuration"
+          - "buildButton"
+          - "inQueueColumn"
+          - "builtOnColumn"
+          - "lastTriggeredColumn"
+          - "lastSuccessfulDuration"
+        description: "Collection of jobs created just for testing some solutions or\
+        \ not working anymore.\r\nAnyway, jobs that are not supposed to run."
+        jobNames:
+          - "nexus-repository-indexer-deploy-snapshots"
+          - "windup-core-PR-dependents-check-jdk11-test"
+          - "windup-jdk11-builder"
+          - "windup-jdk11-trigger"
+          - "windup-jdk8-tester"
+        name: "Not working - under development"
+    - all:
+        name: "all"
+    - list:
+        columns:
+          - "status"
+          - "weather"
+          - "jobName"
+          - "lastSuccess"
+          - "lastFailure"
+          - "lastDuration"
+          - "buildButton"
+        jobNames:
+          - "migration-analytics-snapshots-deploy"
+        name: "migration analytics"
+    - list:
+        columns:
+          - "status"
+          - "weather"
+          - "jobName"
+          - "lastSuccess"
+          - "lastFailure"
+          - "lastDuration"
+          - "buildButton"
+        jobNames:
+          - "windup-nightly"
+          - "windup-nightly-jdk11"
+          - "windup-openshift"
+          - "windup-quickstarts-master"
+          - "windup-rulesets-master"
+          - "windup-web-nightly"
+        name: "nightly tests"
+    - list:
+        columns:
+          - "status"
+          - "weather"
+          - "jobName"
+          - "lastSuccess"
+          - "lastFailure"
+          - "lastDuration"
+          - "buildButton"
+        jobNames:
+          - "windup-performance-check-run"
+          - "windup-performance-check-trigger"
+        name: "performance tracking"
+    - list:
+        columns:
+          - "status"
+          - "weather"
+          - "jobName"
+          - "lastSuccess"
+          - "lastFailure"
+          - "lastDuration"
+          - "buildButton"
+        jobNames:
+          - "windup-core-pr-dependents-check"
+          - "windup-core-PR-dependents-check-jdk11"
+          - "windup-jdk11-pr-builder"
+          - "windup-pr-builder"
+          - "windup-rulesets-pr-builder"
+          - "windup-rulesets-pr-builder-jdk11"
+          - "windup-web-pr-builder"
+          - "windup-web-pr-builder-jdk11"
+          - "windup-web-pr-production-builder"
+        name: "pr-builders"
+    - list:
+        columns:
+          - "status"
+          - "weather"
+          - "jobName"
+          - "lastSuccess"
+          - "lastFailure"
+          - "lastDuration"
+          - "buildButton"
+        jobNames:
+          - "eap7-rhamt-web-builder"
+          - "nexus-repository-indexer-release"
+          - "windup-keycloak-tool-release"
+          - "windup-web-keycloak-theme-release"
+        name: "production ready build jobs"
+    - buildPipeline:
+        alwaysAllowManualTrigger: true
+        buildCard: "standardBuildCard"
+        buildViewTitle: "MTA Release"
+        columnHeaders: "nullColumnHeader"
+        gridBuilder:
+          downstream:
+            firstJob: "windup-release-trigger"
+        name: "windup-release-pipeline"
+        noOfDisplayedBuilds: "20"
+        refreshFrequency: 3
+        rowHeaders: "parametersActionHeader"
+        showPipelineDefinitionHeader: false
+        showPipelineParameters: false
+        showPipelineParametersInHeaders: false
+        triggerOnlyLatestJob: false
+    - list:
+        columns:
+          - "status"
+          - "weather"
+          - "jobName"
+          - "lastSuccess"
+          - "lastFailure"
+          - "lastDuration"
+          - "buildButton"
+          - "inQueueColumn"
+          - "builtOnColumn"
+          - "lastTriggeredColumn"
+          - "lastSuccessfulDuration"
+        jobNames:
+          - "windup-deploy-distribution-snapshots"
+          - "windup-deploy-rulesets-snapshots"
+          - "windup-deploy-snapshots"
+          - "windup-keycloak-tool-deploy-snapshots"
+          - "windup-maven-plugin-deploy-snapshots"
+          - "windup-openshift-deploy-snapshots"
+          - "windup-operator-snapshots"
+          - "windup-web-deploy-snapshots"
+          - "windup-web-distribution-deploy-snapshots"
+          - "windup-web-keycloak-theme-deploy-snapshots"
+        name: "windup-snapshot-deployment"
+
 security:
   sSHD:
     port: 50022
