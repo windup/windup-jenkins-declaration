@@ -99,11 +99,6 @@ jenkins:
       groupIdStrategy: CaseInsensitive
       disableRolePrefixing: true
 
-  # Markup Formatter
-  markupFormatter:
-    rawHtml:
-      disableSyntaxHighlighting: false
-
   clouds:
     - openstack:
         credentialsId: "76ffd092-d399-4f80-9cfa-f10fdbe54841"
