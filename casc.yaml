@@ -197,7 +197,7 @@ jenkins:
   updateCenter:
     sites:
     - id: "default"
-      url: "https://2-235-jenkins-csb-uc.cloud.paas.psi.redhat.com/update-center.json"
+      url: "https://2-277-2-jenkins-csb-uc.apps.ocp4.prod.psi.redhat.com/update-center.json"
 
   views:
     - list:

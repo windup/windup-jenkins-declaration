@@ -9,4 +9,4 @@ OS_PROJECT_NAME: 'jenkins-csb-windup'
 # Name of the OpenShift tenant the deployment is in
 OS_TENANT_NAME: 'main'
 # Version of the container to use. Note there is only handful of containers supported.
-JENKINS_CSB_VERSION: '2-235'
+JENKINS_CSB_VERSION: '2-277'
