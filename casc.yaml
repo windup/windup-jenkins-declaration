@@ -474,6 +474,11 @@ unclassified:
     maxAttachmentSizeMb: 0
     precedenceBulk: false
     watchingEnabled: false
+  ghprbTrigger:
+    githubAuth:
+    - credentialsId: "e3773c5d-743a-4655-9080-e2050792b7af"
+      description: "windupgithubbot1"
+      id: "d9540ebf-4f63-4b30-85bc-d6aeab20a0e3"
 
 configuration-as-code:
   deprecated: warn
