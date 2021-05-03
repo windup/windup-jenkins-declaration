@@ -194,6 +194,9 @@ jenkins:
     - id: "default"
       url: "https://2-277-2-jenkins-csb-uc.apps.ocp4.prod.psi.redhat.com/update-center.json"
 
+  primaryView:
+    all:
+     name: "all"
   views:
     - list:
         columns:
