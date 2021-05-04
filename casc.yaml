@@ -478,6 +478,12 @@ unclassified:
     precedenceBulk: false
     watchingEnabled: false
   ghprbTrigger:
+    adminlist: |-
+      m-brophy
+      mrizzi
+      jonathanvila
+      carlosthe19916
+      PhilipCattanach
     githubAuth:
     - credentialsId: "e3773c5d-743a-4655-9080-e2050792b7af"
       description: "windupgithubbot1"
