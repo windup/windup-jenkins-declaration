@@ -99,11 +99,6 @@ jenkins:
       groupIdStrategy: CaseInsensitive
       disableRolePrefixing: true
 
-  # Markup Formatter
-  markupFormatter:
-    rawHtml:
-      disableSyntaxHighlighting: false
-
   clouds:
     - openstack:
         credentialsId: "76ffd092-d399-4f80-9cfa-f10fdbe54841"
@@ -197,8 +192,11 @@ jenkins:
   updateCenter:
     sites:
     - id: "default"
-      url: "https://2-235-jenkins-csb-uc.cloud.paas.psi.redhat.com/update-center.json"
+      url: "https://2-277-2-jenkins-csb-uc.apps.ocp4.prod.psi.redhat.com/update-center.json"
 
+  primaryView:
+    all:
+     name: "all"
   views:
     - list:
         columns:
@@ -452,6 +450,89 @@ unclassified:
               serverId: "jboss-snapshots-repository"
             - credentialsId: "ffff8a22-4e5e-4d0e-808d-af37fcb68aec"
               serverId: "jboss-releases-repository"
+  setupConfig:
+    setupConfigItems:
+      - commandLine: "echo '<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<settings\
+          \ xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+          \ xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd\"\
+          >\n  <profiles>\n    <!-- Configure the JBoss EAP Maven repository -->\n\
+          \    <profile>\n      <id>jboss-eap-repository</id>\n      <repositories>\n\
+          \        <repository>\n          <id>jboss-eap-techpreview</id>\n      \
+          \    <url>https://maven.repository.redhat.com/techpreview/all/</url>\n \
+          \         <releases>\n            <enabled>true</enabled>\n          </releases>\n\
+          \          <snapshots>\n            <enabled>false</enabled>\n         \
+          \ </snapshots>\n        </repository>\n      </repositories>\n      <pluginRepositories>\n\
+          \        <pluginRepository>\n          <id>jboss-eap-earlyaccess</id>\n\
+          \          <url>https://maven.repository.redhat.com/earlyaccess/all/</url>\n\
+          \          <releases>\n            <enabled>true</enabled>\n          </releases>\n\
+          \          <snapshots>\n            <enabled>false</enabled>\n         \
+          \ </snapshots>\n        </pluginRepository>\n      </pluginRepositories>\n\
+          \    </profile>\n\n    <!-- Configure the JBoss Community Maven repository\
+          \ -->\n    <profile>\n      <id>jboss-community-repository</id>\n      <repositories>\n\
+          \        <repository>\n          <id>jboss-community-repository</id>\n \
+          \         <url>https://repository.jboss.org/nexus/content/groups/public/</url>\n\
+          \          <releases>\n            <enabled>true</enabled>\n          </releases>\n\
+          \          <snapshots>\n            <enabled>true</enabled>\n          </snapshots>\n\
+          \        </repository>\n      </repositories>\n      <pluginRepositories>\n\
+          \        <pluginRepository>\n          <id>jboss-community-plugin-repository</id>\n\
+          \          <url>https://repository.jboss.org/nexus/content/groups/public/</url>\n\
+          \          <releases>\n            <enabled>true</enabled>\n          </releases>\n\
+          \          <snapshots>\n            <enabled>true</enabled>\n          </snapshots>\n\
+          \        </pluginRepository>\n      </pluginRepositories>\n    </profile>\n\
+          \n    <profile>\n    <id>jboss-developer-repository</id>\n    <repositories>\n\
+          \        <repository>\n            <id>jboss-developer-repository</id>\n\
+          \            <url>https://jboss-developer.github.io/temp-maven-repo/</url>\n\
+          \            <releases>\n               <enabled>true</enabled>\n      \
+          \      </releases>\n            <snapshots>\n              <enabled>false</enabled>\n\
+          \            </snapshots>\n        </repository>\n    </repositories>\n\
+          \    <pluginRepositories>\n        <pluginRepository>\n            <id>jboss-developer-plugin-repository</id>\n\
+          \            <url>https://jboss-developer.github.io/temp-maven-repo/</url>\n\
+          \            <releases>\n              <enabled>true</enabled>\n       \
+          \     </releases>\n            <snapshots>\n              <enabled>false</enabled>\n\
+          \            </snapshots>\n        </pluginRepository>\n    </pluginRepositories>\n\
+          </profile>\n   <profile>\n       <id>sonatype-snapshots</id>\n       <repositories>\n\
+          \           <repository>\n\t\t<id>sonatype-snapshots</id>\n\t\t<url>https://oss.sonatype.org/content/repositories/snapshots/</url>\n\
+          \               <releases>\n                  <enabled>false</enabled>\n\
+          \               </releases>\n               <snapshots>\n              \
+          \   <enabled>true</enabled>\n               </snapshots>\n           </repository>\n\
+          \       </repositories>\n   </profile>\n   <profile>\n       <id>jboss-releases</id>\n\
+          \       <repositories>\n           <repository>\n\t\t<id>jboss-releases</id>\n\
+          \t\t<url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/</url>\n\
+          \               <releases>\n                  <enabled>true</enabled>\n\
+          \               </releases>\n               <snapshots>\n              \
+          \   <enabled>false</enabled>\n               </snapshots>\n           </repository>\n\
+          \       </repositories>\n   </profile>\n  <profile>\n      <id>redhat-ga-repository</id>\n\
+          \      <repositories>\n        <repository>\n          <id>redhat-ga-repository</id>\n\
+          \          <name>Red Hat GA repository</name>\n          <url>https://maven.repository.redhat.com/ga/</url>\n\
+          \          <releases>\n            <enabled>true</enabled>\n           \
+          \ <updatePolicy>never</updatePolicy>\n          </releases>\n          <snapshots>\n\
+          \            <enabled>false</enabled>\n            <updatePolicy>daily</updatePolicy>\n\
+          \          </snapshots>\n        </repository>\n      </repositories>\n\
+          \      <pluginRepositories>\n        <pluginRepository>\n          <id>redhat-ga-repository</id>\n\
+          \          <name>Red Hat GA repository</name>\n          <url>https://maven.repository.redhat.com/ga/</url>\n\
+          \          <releases>\n            <enabled>true</enabled>\n           \
+          \ <updatePolicy>never</updatePolicy>\n          </releases>\n          <snapshots>\n\
+          \            <enabled>false</enabled>\n            <updatePolicy>daily</updatePolicy>\n\
+          \          </snapshots>\n        </pluginRepository>\n      </pluginRepositories>\n\
+          \    </profile>\n  <profile>\n      <id>central-overwrite-repository</id>\n\
+          \  <repositories>\n    <repository>\n      <id>central</id>\n      <name>Central\
+          \ Repository</name>\n      <url>https://repo.maven.apache.org/maven2</url>\n\
+          \      <layout>default</layout>\n      <snapshots>\n        <enabled>false</enabled>\n\
+          \      </snapshots>\n    </repository>\n  </repositories>\n  <pluginRepositories>\n\
+          \    <pluginRepository>\n      <id>central</id>\n      <name>Central Repository</name>\n\
+          \      <url>https://repo.maven.apache.org/maven2</url>\n      <layout>default</layout>\n\
+          \      <snapshots>\n        <enabled>false</enabled>\n      </snapshots>\n\
+          \      <releases>\n        <updatePolicy>never</updatePolicy>\n      </releases>\n\
+          \    </pluginRepository>\n  </pluginRepositories>\n    </profile>\n    <profile>\n\
+          \      <id>ossrh</id>\n      <activation>\n        <activeByDefault>true</activeByDefault>\n\
+          \      </activation>\n      <properties>\n        <gpg.passphrase>^${env.GPG_PASSPHRASE}</gpg.passphrase>\n\
+          \      </properties>\n    </profile>\n  </profiles>\n\n  <activeProfiles>\n\
+          \    <!-- Optionally, make the repositories active by default -->\n    <!--\
+          \ activeProfile>jboss-eap-repository</activeProfile -->\n    <!-- activeProfile>jboss-community-repository</activeProfile\
+          \ -->\n    <!--activeProfile>jboss-developer-repository</activeProfile>\
+          \ -->\n    <activeProfile>sonatype-snapshots</activeProfile>\n    <activeProfile>jboss-releases</activeProfile>\n\
+          \    <activeProfile>redhat-ga-repository</activeProfile>\n    <activeProfile>central-overwrite-repository</activeProfile>\n\
+          \  </activeProfiles>\n\n</settings>' > /home/fedora/.m2/settings.xml"
   mailer:
     charset: "UTF-8"
     defaultSuffix: "@redhat.com"
@@ -479,6 +560,17 @@ unclassified:
     maxAttachmentSizeMb: 0
     precedenceBulk: false
     watchingEnabled: false
+  ghprbTrigger:
+    adminlist: |-
+      m-brophy
+      mrizzi
+      jonathanvila
+      carlosthe19916
+      PhilipCattanach
+    githubAuth:
+    - credentialsId: "e3773c5d-743a-4655-9080-e2050792b7af"
+      description: "windupgithubbot1"
+      id: "d9540ebf-4f63-4b30-85bc-d6aeab20a0e3"
 
 configuration-as-code:
   deprecated: warn
